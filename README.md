@@ -21,3 +21,9 @@ http://goo.gl/exO4Qz
 
 Link til Test case:
 http://goo.gl/8g5A11
+
+Link til Brukermanual
+http://goo.gl/xqIT9R
+
+Link til use case
+http://goo.gl/L5VTd1
