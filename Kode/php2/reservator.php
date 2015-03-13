@@ -1,15 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "Alexander12#";
-$dbname = "reservations";
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 include ("connect.php");
 
 
@@ -26,5 +16,5 @@ $tbl_insert = "INSERT INTO confirms (roomnum, start_date, end_date, navn)
 	    } else {
 	        echo "<h3>NOT inserted</h3>";
     }
-mysqli_close($conn);
+$sql = "UPDATE available SET avail='1' WHERE roomnum = '$velgRom' ";
 ?>
