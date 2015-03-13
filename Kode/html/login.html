@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/bookingSystem.css">
+		<link rel="shortcut icon" href="../images/favicon.png" type="image/png"/>
+		<link rel="icon" href="../images/favicon.png" type="image/png"/>
+		<title>Westerdals CK32</title>
+	</head>
+
+	<body>
+		<div id="pageWrap">
+			<div id="containerLogin">
+				<form action="index.html" method="POST">
+					<label><b>E-post: </b></label>
+					<input type="text" name="username" pattern="[a-z0-9._%+-]+@student.westerdals.no" placeholder="brukernavn@student.westerdals.no" required />
+					<label><b>Passord: </b></label>
+					<input type="password" name="psw" placeholder="passord" required />
+					<input type="submit" name="login" value="Logg inn" />
+				</form>
+			</div>
+			<div id="blurOn">
+				<a href="../html/login.html">
+					<img src="../images/logowesterdals-01.png" alt="WesterdalsCK32" id="logoWesterdals">
+				</a>
+				<div id="containerLeft">
+				<form>
+					<fieldset>
+						<legend><b>Booking detaljer</b></legend>
+						<label><b>Book fra: </b></label><br>
+						<input type="datetime-local"/></input><br>
+						<label><b>Book til: </b></label><br>
+						<input type="datetime-local"/></input><br>
+						<label><b>Prosjektor: </b></label>
+						<input id="prosjektor" type="checkbox" name="prosjektor" value="yes" unchecked><br><br>
+						<input id="search" type="image" src="../images/search.jpg">
+					</fieldset>
+				</form>
+				</div>
+				<form>
+				<div id="containerRight">
+				</div>
+				</form>
+				<div id="asapButton">
+					<input id="searchNow" type="image" src="../images/asapButton.jpg">
+				</div>
+				<div id="footer">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

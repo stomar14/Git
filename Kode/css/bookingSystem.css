@@ -1,0 +1,81 @@
+/*Kenneth Andresen*/
+
+body{
+	margin: 0;
+}
+
+#pageWrap {
+	height: 900px;
+	width: 100%;
+	background-color: rgb(255, 255, 255);
+	overflow: hidden;
+}
+
+#pageWrap *{
+	position: relative;
+}
+
+#logoWesterdals {
+	height: 150px;
+	width: 150px;
+	top: 10px;
+	left: 130px;
+}
+
+#asapButton {
+	left: 100px;
+	top: -300px;
+}
+
+#containerLeft {
+	left: 100px;
+	top: 50px;
+	height: 210px;
+	width: 230px;
+	border-radius: 10px;
+	background-color: rgb(100, 150, 150);
+}
+
+#containerRight {
+	left: 400px;
+	top: -250px;
+	height: 400px;
+	width: 800px;
+	background-color: rgb(100, 100, 100);
+}
+
+#footer {
+	left: 0px;
+	bottom: 100px;
+	height: 200px;
+	width: 100%;
+	background-color: rgb(100, 100, 100);
+}
+
+#containerLogin {
+	text-align: center;
+	border-radius: 10px;
+	height: 100px;
+	width: 210px;
+	left: 40%;
+	top: 40%;
+	z-index: 1;
+	background-color: rgb(100, 150, 150);
+	position: absolute;
+}
+
+#blurOn {
+	opacity: 0.1;
+}
+
+#blurOff {
+	opacity: 0.1;
+	-webkit-animation-name: blurOff;
+	-webkit-animation-duration: 1.5s;
+	-webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes blurOff {
+	0% { opacity: 0.1; }
+	100% { opacity: 1; }
+}
