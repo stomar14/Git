@@ -12,10 +12,10 @@
 		<div id="pageWrap">
 			<div id="containerLogin">
 				<form action="index.html" method="POST">
-					<label><b>E-post: </b></label>
-					<input type="text" name="username" pattern="[a-z0-9._%+-]+@student.westerdals.no" placeholder="brukernavn@student.westerdals.no" required />
-					<label><b>Passord: </b></label>
-					<input type="password" name="psw" placeholder="passord" required />
+					<label><b>E-post: </b></label><br>
+					<input type="text" name="username" pattern="[a-zA-Z0-9]{5,}@student.westerdals.no" placeholder="brukernavn@student.westerdals.no" required />
+					<label><b>Passord: </b></label><br>
+					<input type="password" name="psw" pattern=".{6,}" placeholder="passord" required />
 					<input type="submit" name="login" value="Logg inn" />
 				</form>
 			</div>
@@ -32,7 +32,10 @@
 						<label><b>Book til: </b></label><br>
 						<input type="datetime-local"/></input><br>
 						<label><b>Prosjektor: </b></label>
-						<input id="prosjektor" type="checkbox" name="prosjektor" value="yes" unchecked><br><br>
+						Ja:
+						<input type="radio" name="yes" value="yes">
+						Nei:
+						<input type="radio" name="no" value="no"><br><br>
 						<input id="search" type="image" src="../images/search.jpg">
 					</fieldset>
 				</form>
@@ -45,6 +48,11 @@
 					<input id="searchNow" type="image" src="../images/asapButton.jpg">
 				</div>
 				<div id="footer">
+					<br>
+					<img src="../images/footerLogo.png" alt="footerLogo">
+					<br>
+					<pre><a href="tel:22057550">Telefon 22 05 75 50</a>   <a href="mailto:post@westerdals.no">post@westerdals.no</a></pre>
+					<p>Løsning laget av Gruppe 9</p>
 				</div>
 			</div>
 		</div>

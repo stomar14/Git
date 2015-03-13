@@ -11,6 +11,11 @@ body{
 	overflow: hidden;
 }
 
+a {
+	font-size: 20px;
+	color: rgb(0, 0, 0);
+}
+
 #pageWrap *{
 	position: relative;
 }
@@ -30,7 +35,7 @@ body{
 #containerLeft {
 	left: 100px;
 	top: 50px;
-	height: 210px;
+	height: 215px;
 	width: 230px;
 	border-radius: 10px;
 	background-color: rgb(100, 150, 150);
@@ -45,6 +50,7 @@ body{
 }
 
 #footer {
+	text-align: center;
 	left: 0px;
 	bottom: 100px;
 	height: 200px;
@@ -55,7 +61,7 @@ body{
 #containerLogin {
 	text-align: center;
 	border-radius: 10px;
-	height: 100px;
+	height: 120px;
 	width: 210px;
 	left: 40%;
 	top: 40%;
