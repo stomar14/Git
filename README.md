@@ -3,6 +3,11 @@
 Bra att ha read me´n =)
 Skriv her om ni legger in noe nytt ?
 
+Idéplan:
+http://goo.gl/SU8zce
+
+Vektlegging:
+http://goo.gl/fj0ysr
 
 Linken till kladd google docs:
 http://goo.gl/HPVMJM
