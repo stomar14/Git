@@ -60,7 +60,7 @@ $chart .= '<div class="clear">';
 <body>
 	<form name="søk" action="search_page.php" method="POST">
 		<fieldset>
-			<legend>Booking Details: </legend>
+			<legend>Booking Detaljer: </legend>
 			<label for="date">Når skal du booke?: </label><input id="date" type="datetime" name="date" pattern="[YYYY-mm-dd HH:MM]">
 			<br>
 			<label for="date_end">Hvor lenge skal dere bruke rommet?: </label><input id="date_end" type="datetime" name="date_end" pattern="[YYYY-mm-dd HH:MM]">

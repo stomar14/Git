@@ -35,7 +35,7 @@ a {
 #containerLeft {
 	left: 100px;
 	top: 50px;
-	height: 215px;
+	height: 250px;
 	width: 230px;
 	border-radius: 10px;
 	background-color: rgb(100, 150, 150);
@@ -68,6 +68,30 @@ a {
 	z-index: 1;
 	background-color: rgb(100, 150, 150);
 	position: absolute;
+}
+
+.available{
+	background-image: url(openTable.jpg);
+	background-repeat: no-repeat;
+	float: left;
+	height: 200px;
+	width: 200px;
+}
+.full{
+	background-image: url(tableFull.jpg);
+	background-repeat: no-repeat;
+	float: left;
+	height: 200px;
+	width: 200px;
+}
+.clear{
+	clear: both;
+}
+.numSeats{
+	color: #03F;
+	margin: 75px;
+	height: 50px;
+	width: 50px;
 }
 
 #blurOn {

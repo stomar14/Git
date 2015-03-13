@@ -1,34 +1,21 @@
 <?php
-// Database connection script
+
 include ("connect.php");
 
-
-// Clean out expired reservations
-$clean = "SELECT c.*, a.avail
-		  FROM confirms AS c
-		  LEFT JOIN available AS a ON a.roomnum = c.roomnum
-		  WHERE c.end_date < NOW()";
-$freequery = mysqli_query($connect, $clean) or die (mysqli_error($connect));
-$num_check = mysqli_num_rows($freequery);
-if ($num_check != 0){
-	while ($row = mysqli_fetch_array($freequery, MYSQLI_ASSOC)){
-		$id = $row['roomnum'];			
-		// Delete the reserves
-		$sql = "DELETE FROM confirms WHERE roomnum='$id' LIMIT 1";
-		$query = mysqli_query($connect, $sql);
-		/*Update the database with newly available rooms
-		$sql = "UPDATE available SET avail='1' WHERE roomnum LIKE '$id'";*/
-	if (mysqli_query($conn, $sql)) {
-		echo "Record updated successfully";
-	} else {
-		echo "Error updating record: " . mysqli_error($conn);
-	}
-	}
-}
-
+$prosjektor = $_POST['prosjektor'];
+$nop = $_POST['numberOfPeople'];
+$date = $_POST['date'];
+$date_end = $_POST['date_end'];
 // Get initial state of available rooms
 $chart = "";
-$sql = "SELECT * FROM available";
+if($prosjektor = '1') {
+	$sql = "SELECT * FROM available WHERE prosjektor = '1'"; 
+	} else {
+	$sql = "SELECT * FROM available
+		  WHERE prosjektor = '0'";
+	};
+/*if($date < date("Y-m-d H:i") < $date_end) {
+	$sql = "UPDATE available SET avail='0' WHERE  ";*/
 $query = mysqli_query($connect, $sql) or die (mysqli_error($connect));
 // Loop and get all the data
 while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)){
@@ -43,7 +30,7 @@ while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)){
 		$chart .= '<div class="full"><div class="numSeats">The room is taken.</div></div>';		
 	} else {
 		// Display for available rooms
-		$chart .= '<div class="available"><div id="tbl_'.$id.'" class="numSeats">The room is available!</div></div>';		
+		$chart .= '<div class="available"><div id="tbl_'.$roomnum.'" class="numSeats">Rom is available!</div></div>';		
 	}
 }
 $chart .= '<div class="clear">';
@@ -68,7 +55,7 @@ $chart .= '<div class="clear">';
 					<img src="../images/logowesterdals-01.png" alt="WesterdalsCK32" id="logoWesterdals">
 				</a>
 				<div id="containerLeft">
-				<form name="søk" action="search_page.php" method="GET">
+				<form name="søk" action="reservator.php" method="GET">
 					<fieldset>
 						<legend>Booking Details: </legend>
 						<label for="date">Når skal du booke?: </label><input id="date" type="datetime-local" name="date" pattern="[YYYY-mm-dd HH:MM]">
