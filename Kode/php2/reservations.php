@@ -19,56 +19,33 @@ if ($num_check != 0){
 		/*Update the database with newly available rooms
 		$sql = "UPDATE available SET avail='1' WHERE roomnum LIKE '$id'";*/
 	if (mysqli_query($conn, $sql)) {
-		echo "Record updated successfully";
+		echo "Database updated successfully";
 	} else {
-		echo "Error updating record: " . mysqli_error($conn);
+		echo "Error updating database: " . mysqli_error($conn);
 	}
 	}
 }
-
-// Get initial state of available rooms
-$chart = "";
-$sql = "SELECT * FROM available";
-$query = mysqli_query($connect, $sql) or die (mysqli_error($connect));
-// Loop and get all the data
-while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)){
-	// Assign room data to variables
-	$id = $row['id'];
-	$roomnum = $row['roomnum'];
-	$avail = $row['avail'];
-	$prosjektor = $row['prosjektor'];
-	// Build display output
-	// Display for available rooms
-	if ($avail == 0){
-		$chart .= '<div class="full"><div class="numSeats">The room is taken.</div></div>';		
-	} else {
-		// Display for available rooms
-		$chart .= '<div class="available"><div id="tbl_'.$id.'" class="numSeats">The room is available!</div></div>';		
-	}
-}
-$chart .= '<div class="clear">';
-	
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="reservations.css">
-<script src="reservations.js"></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="reservations.css">
+    <script src="reservations.js"></script>
 </head>
 <body>
 	<form name="søk" action="search_page.php" method="POST">
 		<fieldset>
-			<legend>Booking Detaljer: </legend>
-			<label for="date">Når skal du booke?: </label><input id="date" type="datetime" name="date" pattern="[YYYY-mm-dd HH:MM]">
+			<legend>Booking Details: </legend>
+			<label for="date">Når skal du booke?: </label><input id="date" type="datetime" name="date" pattern="[YYYY-mm-dd HH:MM]" value="YYYY-mm-dd HH:MM"">
 			<br>
-			<label for="date_end">Hvor lenge skal dere bruke rommet?: </label><input id="date_end" type="datetime" name="date_end" pattern="[YYYY-mm-dd HH:MM]">
+			<label for="date_end">Hvor lenge skal dere bruke rommet?: </label><input id="date_end" type="datetime" name="date_end" pattern="[YYYY-mm-dd HH:MM]" value="YYYY-mm-dd HH:mm">
 			<br>
-			<label for="numberOfPeople">Hvor mange skal bruke rommet?: </label><input id="numberOfPeople" type="number" name="numberOfPeople" min="2" max="4">
+			<label for="numberOfPeople">Hvor mange skal bruke rommet?: </label><input id="numberOfPeople" type="number" name="numberOfPeople" min="2" max="4" value="2">
 			<br>
-			<label for="Prosjektor">Trenger dere Prosjektor? Ja: </label><input id="Prosjektor" type="radio" name="prosjektor" value="Prosjektor">
-			<label for="ikkeProsjektor">Nei: </label><input id="ikkeProsjektor" type="radio" name="prosjektor" value="ikkeProsjektor">
+			<label for="Prosjektor">Trenger dere Prosjektor? Ja: </label><input id="Prosjektor" type="radio" name="prosjektor" value="P">
+			<label for="ikkeProsjektor">Nei: </label><input id="ikkeProsjektor" type="radio" name="prosjektor" value="iP">
 			<br>
 			<input id="confirmBtn" type="submit" name="submit">
 		</fieldset>
@@ -76,7 +53,7 @@ $chart .= '<div class="clear">';
 <div id="wrapper">
    <div id="header"></div>
    <div id="rom">
-      <?php echo $chart; ?>   
+
    </div>
 </div>
 </body>
