@@ -5,45 +5,47 @@ body{
 }
 
 #pageWrap {
-	height: 900px;
-	width: 100%;
-	background-color: rgb(255, 255, 255);
-	overflow: hidden;
-}
-
-a {
-	font-size: 20px;
-	color: rgb(0, 0, 0);
+	height: 1250px;
+    width: 1100px;
+	background-color: rgb(200, 255, 255);
+    margin: auto;
+    position: relative;
+    overflow: hidden;
 }
 
 #pageWrap *{
 	position: relative;
 }
 
+a {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+}
+
 #logoWesterdals {
 	height: 150px;
 	width: 150px;
 	top: 10px;
-	left: 130px;
+	left: 0px;
 }
 
 #asapButton {
-	left: 100px;
-	top: -300px;
+	left: 30px;
+	top: 100px;
 }
 
 #containerLeft {
-	left: 100px;
-	top: 50px;
+	left: 0px;
+	top: 60px;
 	height: 250px;
 	width: 230px;
-	border-radius: 10px;
-	background-color: rgb(100, 150, 150);
+    padding: 5px;
+	border: 5px solid rgb(100, 150, 150);
 }
 
 #containerRight {
-	left: 400px;
-	top: -250px;
+	left: 300px;
+    top: 100px;
 	height: 400px;
 	width: 800px;
 	background-color: rgb(100, 100, 100);
@@ -51,10 +53,10 @@ a {
 
 #footer {
 	text-align: center;
-	left: 0px;
-	bottom: 100px;
+    bottom: -632px;
+    left: 0px;
 	height: 200px;
-	width: 100%;
+	width: 1100px;
 	background-color: rgb(100, 100, 100);
 }
 
@@ -64,21 +66,21 @@ a {
 	height: 120px;
 	width: 210px;
 	left: 40%;
-	top: 40%;
+	top: 300px;
 	z-index: 1;
 	background-color: rgb(100, 150, 150);
 	position: absolute;
 }
 
 .available{
-	background-image: url(openTable.jpg);
+	background-image: url("../images/openTable.jpg");
 	background-repeat: no-repeat;
 	float: left;
 	height: 200px;
 	width: 200px;
 }
 .full{
-	background-image: url(tableFull.jpg);
+	background-image: url("../images/tableFull.jpg");
 	background-repeat: no-repeat;
 	float: left;
 	height: 200px;
