@@ -35,7 +35,8 @@ a {
 
 #logoWesterdals {
 	height: 150px;
-	width: 150px;
+	width: 100%;
+	max-width: 150px;
 	top: 10px;
 	left: 50px;
 }
@@ -49,7 +50,8 @@ a {
 	left: 10px;
 	top: 60px;
 	height: 250px;
-	width: 230px;
+	width: 100%;
+	max-width: 230px;
     padding: 5px;
 	border: 5px solid rgb(100, 150, 150);
 }
@@ -58,7 +60,8 @@ a {
 	left: 300px;
     top: -250px;
 	height: 400px;
-	width: 800px;
+	width: 100%;
+	max-width: 800px;
 	background-color: rgb(100, 100, 100);
 }
 
@@ -66,7 +69,8 @@ a {
 	text-align: center;
 	border-radius: 10px;
 	height: 120px;
-	width: 210px;
+	width: 100%;
+	max-width: 210px;
 	left: 40%;
 	top: 20%;
 	z-index: 1;
