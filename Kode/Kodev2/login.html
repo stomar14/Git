@@ -9,7 +9,12 @@
 		<title>Westerdals CK32</title>
 		<style>
 		footer {
-			bottom: -170px;
+			bottom: -145px;
+		}
+		
+		input[type="text"],input[type="password"],input[type="submit"] {
+			max-width: 1000px;
+			width: 100%;
 		}
 		</style>
 	</head>
@@ -21,17 +26,20 @@
 				</a>
 				<div id="containerLogin">
 				<form action="php/index.php" method="POST">
-					<label><b>E-post: </b></label><br>
+					<label><b>E-post: </b></label>
 					<input type="text" name="username" pattern="[a-zA-Z0-9]{5,}@student.westerdals.no" placeholder="brukernavn@student.westerdals.no" required />
-					<label><b>Passord: </b></label><br>
+					<br />
+					<label><b>Passord: </b></label>
 					<input type="password" name="psw" pattern=".{6,}" placeholder="passord" required />
+					<br />
+					<br />
 					<input type="submit" name="login" value="Logg inn" />
 				</form>
 				</div>
                 <footer>
-                    <br>
+                    <br />
                     <img src="images/footerLogo.png" alt="footerLogo">
-                    <br>
+                    <br />
                     <pre><a href="tel:22057550">Telefon 22 05 75 50</a>   <a href="mailto:post@westerdals.no">post@westerdals.no</a></pre>
                     <p>Løsning laget av Gruppe 9</p>
                 </footer>

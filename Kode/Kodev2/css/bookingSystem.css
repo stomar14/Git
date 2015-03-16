@@ -16,10 +16,11 @@ body > .pageWrap {
 
 .pageWrap {
     width: 100%;
-	max-width: 1280px;
+	max-width: 1380px;
     margin: auto;
     position: relative;
 	background-color: rgb(255, 255, 255);
+	overflow: hidden;
 }
 
 .pageWrap *{
@@ -29,6 +30,11 @@ body > .pageWrap {
 a{
     font-size: 150%;
     color: rgb(0, 0, 0);
+}
+
+input[type="datetime-local"] {
+	max-width: 200px;
+	width: 100%;
 }
 
 #logoWesterdals {
@@ -64,9 +70,11 @@ a{
 }
 
 #containerLogin {
-	text-align: center;
 	border-radius: 10px;
-	height: 120px;
+	border: 5px solid rgb(150, 150, 150);
+	padding: 10px;
+	height: 100%;
+	max-height: 120px;
 	width: 100%;
 	max-width: 210px;
 	left: 40%;
@@ -79,8 +87,7 @@ footer {
 	text-align: center;
     bottom: 0px;
 	height: 200px;
-	width: 1280px;
-	max-width: 100%;
+	width: 100%;
     background-color: rgb(100, 100, 100);
 	position: absolute;
 }

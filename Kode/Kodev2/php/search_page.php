@@ -11,7 +11,6 @@
 
 	<body>
 		<div class="pageWrap">
-			<div id="blurOff">
 				<a href="../html/index.php">
 					<img src="../images/logowesterdals-01.png" alt="WesterdalsCK32" id="logoWesterdals">
 				</a>
@@ -33,7 +32,6 @@
 				<div id="containerRight">
 				<?php echo $chart; ?>  
 				</div>
-			</div>
                 <footer>
                     <br>
                     <img src="../images/footerLogo.png" alt="footerLogo">
