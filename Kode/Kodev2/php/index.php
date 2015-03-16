@@ -30,6 +30,9 @@
 						    <input id="confirmBtn" type="submit" name="submit">
 				        </form>
 				</div>
+				<div id="containerRight">
+				<?php echo $chart; ?>  
+				</div>
                 <div id="asapButton">
                     <input type="image" src="../images/asapButton.JPG" />
                 </div>
