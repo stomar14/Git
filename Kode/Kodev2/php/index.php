@@ -33,6 +33,8 @@
                 <div id="asapButton">
                     <input type="image" src="../images/asapButton.JPG" />
                 </div>
+			</div>
+		</div>
                 <footer>
                     <br>
                     <img src="../images/footerLogo.png" alt="footerLogo">
@@ -40,7 +42,5 @@
                     <pre><a href="tel:22057550">Telefon 22 05 75 50</a>   <a href="mailto:post@westerdals.no">post@westerdals.no</a></pre>
                     <p>Løsning laget av Gruppe 9</p>
                 </footer>
-			</div>
-		</div>
 	</body>
 </html>

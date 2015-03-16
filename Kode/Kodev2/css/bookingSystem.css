@@ -5,11 +5,11 @@ body{
 }
 
 #pageWrap {
-	height: 1100px;
-    width: 1100px;
+	height: 100%;
+    width: 100%;
 	background-color: rgb(200, 255, 255);
     margin: auto;
-    position: relative;
+    position: absolute;
     overflow: hidden;
 }
 
@@ -67,7 +67,7 @@ footer {
 	height: 120px;
 	width: 210px;
 	left: 40%;
-	top: 300px;
+	top: 30%;
 	z-index: 1;
 	background-color: rgb(100, 150, 150);
 	position: absolute;
@@ -95,10 +95,6 @@ footer {
 	margin: 75px;
 	height: 50px;
 	width: 50px;
-}
-
-#blurOn {
-	opacity: 0.1;
 }
 
 #blurOff {
