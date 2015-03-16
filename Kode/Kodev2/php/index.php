@@ -10,7 +10,7 @@
 	</head>
 
 	<body>
-		<div id="pageWrap">
+		<div class="pageWrap">
 			<div id="blurOff">
 				<a href="../html/index.php">
 					<img src="../images/logowesterdals-01.png" alt="WesterdalsCK32" id="logoWesterdals">
