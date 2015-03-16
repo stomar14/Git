@@ -122,3 +122,18 @@ footer {
 	0% { opacity: 0.1; }
 	100% { opacity: 1; }
 }
+
+@-moz-keyframes blurOff {
+	0% { opacity: 0.1; }
+	100% { opacity: 1; }
+}
+
+@-o-keyframes blurOff {
+	0% { opacity: 0.1; }
+	100% { opacity: 1; }
+}
+
+@keyframes blurOff {
+	0% { opacity: 0.1; }
+	100% { opacity: 1; }
+}
