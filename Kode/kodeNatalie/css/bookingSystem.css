@@ -1,0 +1,97 @@
+body{
+	margin: 0;
+}
+#logo1 {
+	position: relative;
+	height: 150px;
+	width: 150px;
+	top: 40px;
+	left: 260px;
+}
+h1 {
+	font: 25px arial;
+	position: fixed;
+	top: 100px;
+	left: 550px;
+}
+.pageWrap {
+	height: auto;
+	width: 100%;
+	z-index: -100;
+	position: fixed;
+	left: 0;
+	top: 0;
+	min-height: 100px;
+	min-width: 1040px;
+}
+
+#sokeBoks {
+	position: relative;
+	left: 200px;
+	top: 100px;
+	height: 180px;
+	width: 230px;
+    padding: 10px;
+	border: 5px solid rgb(100, 150, 150);
+}
+#planWrap {
+	position: relative;
+	height: 212px;
+	width: 354px;
+	border: 20px black;
+}
+footer {
+	position: absolute;
+	text-align: center;
+    bottom: 0px;
+	width: 100%;
+	height: auto;
+    padding: 20px;
+    background-color: rgb(100, 100, 100);
+}
+#footerLogo{
+	height: 70px;
+}
+
+.available{
+	background-image: url("../images/openTable.jpg");
+	background-repeat: no-repeat;
+	float: left;
+	height: 200px;
+	width: 200px;
+}
+.full{
+	background-image: url("../images/tableFull.jpg");
+	background-repeat: no-repeat;
+	float: left;
+	height: 200px;
+	width: 200px;
+}
+.clear{
+	clear: both;
+}
+.numSeats{
+	color: #03F;
+	margin: 75px;
+	height: 50px;
+	width: 50px;
+}
+#blurOff {
+	opacity: 0.1;
+	-webkit-animation-name: blurOff;
+	-webkit-animation-duration: 1.5s;
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-name: blurOff;
+	-moz-animation-duration: 1.5s;
+	-moz-animation-fill-mode: forwards;
+	-o-animation-name: blurOff;
+	-o-animation-duration: 1.5s;
+	-o-animation-fill-mode: forwards;
+	animation-name: blurOff;
+	animation-duration: 1.5s;
+	animation-fill-mode: forwards;
+}
+@-webkit-keyframes blurOff {
+	0% { opacity: 0.1; }
+	100% { opacity: 1; }
+}
