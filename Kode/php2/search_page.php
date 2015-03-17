@@ -6,6 +6,12 @@ $prosjektor = $_POST['prosjektor'];
 $nop = $_POST['numberOfPeople'];
 $date = $_POST['date'];
 $date_end = $_POST['date_end'];
+//find unavailable rooms
+$sql = "UPDATE available AS a LEFT JOIN confirms AS c ON a.id=c.roomnum SET a.avail = '0'
+WHERE c.start_date < '$date_end' < c.end_date OR c.start_date > '$date'> c.end_date
+OR '$date' < c.start_date < '$date_end'
+OR '$date' < c.end_date < '$date_end'
+OR ";
 // Get initial state of available rooms
 $chart = "";
 if($prosjektor == 'P') {
@@ -26,8 +32,6 @@ while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)){
     $size = $row['storrelse'];
 	// Build display output
 	// Display for rooms
- /*if($date < date("Y-m-d H:i") < $date_end) {
-	$sql = "UPDATE available SET avail='0' WHERE roomnum = '$roomnum'  ";*/
 	if ($avail == 0){
         //Display for unavailable rooms
 		$chart .= '<div class="full"><div class="roomText">'.$roomnum.' is taken.</div></div>';

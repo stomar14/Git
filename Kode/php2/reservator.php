@@ -16,5 +16,6 @@ $tbl_insert = "INSERT INTO confirms (roomnum, start_date, end_date, navn)
 	    } else {
 	        echo "<h3>NOT inserted</h3>";
     }
-$sql = "UPDATE available SET avail='1' WHERE roomnum = '$velgRom' ";
+$sql = "UPDATE available SET avail='1'";
+$query = mysqli_query($connect, $tbl_insert);
 ?>
