@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="css/bookingSystem.css">
-		<link rel="icon" href="images/favicon.png" type="image/png"/>
-		<title>Westerdals CK32</title>
-		<style>
-		input[type="text"],input[type="password"],input[type="submit"] {
-			max-width: 1000px;
-			width: 100%;
-		}
-		</style>
-	</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bookingSystem.css">
+    <link rel="icon" href="images/favicon.png" type="image/png"/>
+    <title>Westerdals CK32</title>
+    <style>
+        input[type="text"], input[type="password"], input[type="submit"] {
+            max-width: 1000px;
+            width: 100%;
+        }
+    </style>
+</head>
 
-	<body>
-		<div class="pageWrap">
-				<a href="html/index.php">
-					<img src="images/favicon.png" alt="WesterdalsCK32" id="logoWesterdals">
-				</a>
-				<div id="containerLogin">
-				<form action="php/index.php" method="POST">
-					<label><b>E-post: </b></label>
-					<input type="text" name="username" pattern="[a-zA-Z0-9]{5,}@student.westerdals.no" placeholder="brukernavn@student.westerdals.no" required />
-					<br />
-					<label><b>Passord: </b></label>
-					<input type="password" name="psw" pattern=".{6,}" placeholder="passord" required />
-					<br />
-					<br />
-					<input type="submit" name="login" value="Logg inn" />
-				</form>
-				</div>
-				</div>
-				<footer>
-                    <img src="images/footerLogo.png" alt="footerLogo">
-                    <br />
-                    <pre><a href="tel:22057550">Telefon 22 05 75 50</a>   <a href="mailto:post@westerdals.no">post@westerdals.no</a></pre>
-					<br />
-                    <p>Løsning laget av Gruppe 9</p>
-                </footer>
-	</body>
+<body>
+<div class="pageWrap">
+    <!--Logo som referer til home-->
+    <a href="login.html">
+        <img src="images/favicon.png" alt="WesterdalsCK32" id="logoWesterdals">
+    </a>
+    <!--Overskrift-->
+    <h1>Booking av grupperom - Christian Krohgs gate 32</h1>
+
+    <!--Logg inn boks-->
+    <div id="containerLogin">
+        <form action="php/index.php" method="POST">
+            <label><b>E-post: </b></label>
+            <input type="text" name="username" pattern="[a-zA-Z0-9]{5,}@student.westerdals.no"
+                   placeholder="brukernavn@student.westerdals.no" required/>
+            <br/>
+            <label><b>Passord: </b></label>
+            <input type="password" name="psw" pattern=".{6,}" placeholder="passord" required/>
+            <br/>
+            <br/>
+            <input type="submit" name="login" value="Logg inn"/>
+        </form>
+    </div>
+</div>
+<footer>
+    <img src="images/footerLogo.png" alt="footerLogo">
+    <br/>
+    <pre><a href="tel:22057550">Telefon 22 05 75 50</a>   <a
+            href="mailto:post@westerdals.no">post@westerdals.no</a></pre>
+    <br/>
+
+    <p>Løsning laget av Gruppe 9</p>
+</footer>
+</body>
 </html>
