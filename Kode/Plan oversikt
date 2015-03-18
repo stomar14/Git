@@ -25,8 +25,8 @@ Over 200+ free JavaScript here!
 	<tr>
 		<td width="100%"><form name="mygallery"><p>
 			<select name="picture" size="1" onChange="showimage()">
-				<option selected value="Prosjekt/images/etasjeEn.jpg">1. Etasje</option>
-				<option value="Prosjekt/images/etasjeTo.jpg">2. Etasje</option>
+				<option selected value="Prosjekt/images/etasjeEn.jpg">2. Etasje</option>
+				<option value="Prosjekt/images/etasjeTo.jpg">3. Etasje</option>
 			</select>
 		</p>
 	</form>
