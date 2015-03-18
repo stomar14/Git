@@ -4,20 +4,20 @@
 	margin-left: auto;
 }
 #header{
-	background-image: url(header.jpg);
+	background-image: url(stage.jpg);
 	background-repeat: no-repeat;
 	height: 200px;
 	width: 600px;
 }
 .available{
-	background-image: url(openRoom.jpg);
+	background-image: url(openTable.jpg);
 	background-repeat: no-repeat;
 	float: left;
 	height: 200px;
 	width: 200px;
 }
 .full{
-	background-image: url(roomFull.jpg);
+	background-image: url(tableFull.jpg);
 	background-repeat: no-repeat;
 	float: left;
 	height: 200px;

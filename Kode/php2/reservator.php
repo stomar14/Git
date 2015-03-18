@@ -12,10 +12,8 @@ $tbl_insert = "INSERT INTO confirms (roomnum, start_date, end_date, navn)
 	VALUES ('$velgRom', '$date', '$date_end', '$name')";
 		$query = mysqli_query($connect, $tbl_insert);
 	if ($query === TRUE) {
-	        echo "<h3>Data inserted</h3>";
+	        echo "<h3>Hei, $name! Du har booket rom $velgRom fra $date til $date_end. Hvis dette ikke er riktig, vennligst kontakt systemansvarlig!</h3>";
 	    } else {
-	        echo "<h3>NOT inserted</h3>";
+	        echo "<h3>Booking ikke fullført, prøv igjen. Hvis det fortsatt ikke funker, vennligst kontakt systemansvarlig!</h3>";
     }
-$sql = "UPDATE available SET avail='1'";
-$query = mysqli_query($connect, $tbl_insert);
 ?>

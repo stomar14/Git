@@ -3,6 +3,9 @@
 Bra att ha read me´n =)
 Skriv her om ni legger in noe nytt ?
 
+Introduksjon:
+http://goo.gl/YnfKh9
+
 Idéplan:
 http://goo.gl/SU8zce
 
