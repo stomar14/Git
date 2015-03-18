@@ -90,7 +90,6 @@ footer {
 	position: absolute;
 	text-align: center;
     bottom: 0px;
-	z-index: 1;
 	height: 180px;
 	width: 100%;
 }
@@ -121,38 +120,38 @@ footer {
 }
 
 /* Animation */
-#blurOff {
+#fadeIn {
 	opacity: 0.1;
-	-webkit-animation-name: blurOff;
+	-webkit-animation-name: fadeIn;
 	-webkit-animation-duration: 1.5s;
 	-webkit-animation-fill-mode: forwards;
-	-moz-animation-name: blurOff;
+	-moz-animation-name: fadeIn;
 	-moz-animation-duration: 1.5s;
 	-moz-animation-fill-mode: forwards;
-	-o-animation-name: blurOff;
+	-o-animation-name: fadeIn;
 	-o-animation-duration: 1.5s;
 	-o-animation-fill-mode: forwards;
-	animation-name: blurOff;
+	animation-name: fadeIn;
 	animation-duration: 1.5s;
 	animation-fill-mode: forwards;
 }
 
-@-webkit-keyframes blurOff {
+@-webkit-keyframes fadeIn {
 	0% { opacity: 0.1; }
 	100% { opacity: 1; }
 }
 
-@-moz-keyframes blurOff {
+@-moz-keyframes fadeIn {
 	0% { opacity: 0.1; }
 	100% { opacity: 1; }
 }
 
-@-o-keyframes blurOff {
+@-o-keyframes fadeIn {
 	0% { opacity: 0.1; }
 	100% { opacity: 1; }
 }
 
-@keyframes blurOff {
+@keyframes fadeIn {
 	0% { opacity: 0.1; }
 	100% { opacity: 1; }
 }

@@ -1,30 +1,13 @@
 <?php
 // Database connection script
-include("connect.php");
+include ("connect.php");
 
 
 // Clean out expired reservations
-$clean = "SELECT c.*, a.avail
-		  FROM confirms AS c
-		  LEFT JOIN available AS a ON a.roomnum = c.roomnum
-		  WHERE c.end_date < NOW()";
-$freequery = mysqli_query($connect, $clean) or die (mysqli_error($connect));
-$num_check = mysqli_num_rows($freequery);
-if ($num_check != 0) {
-    while ($row = mysqli_fetch_array($freequery, MYSQLI_ASSOC)) {
-        $id = $row['roomnum'];
-        // Delete the reserves
-        $sql = "DELETE FROM confirms WHERE roomnum='$id' LIMIT 1";
-        $query = mysqli_query($connect, $sql);
-        /*Update the database with newly available rooms
-        $sql = "UPDATE available SET avail='1' WHERE roomnum LIKE '$id'";*/
-        if (mysqli_query($conn, $sql)) {
-            echo "Database updated successfully";
-        } else {
-            echo "Error updating database: " . mysqli_error($conn);
-        }
-    }
-}
+$sql = "DELETE FROM confirms
+        WHERE end_date < NOW()";
+$freequery = mysqli_query($connect, $sql) or die (mysqli_error($connect));
+
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +20,7 @@ if ($num_check != 0) {
     <title>Westerdals CK32</title>
     <style>
         footer {
-            bottom: -200px;
+            bottom: -100px;
         }
     </style>
     <script type="text/javascript">
@@ -61,7 +44,7 @@ if ($num_check != 0) {
 
 <body>
 <div class="pageWrap">
-    <div id="blurOff">
+    <div id="fadeIn">
         <a href="index.php">
             <img src="../images/favicon.png" alt="WesterdalsCK32" id="logoWesterdals">
         </a>
@@ -71,24 +54,45 @@ if ($num_check != 0) {
         <div id="containerLeft">
             <form name="søk" action="search_page.php" method="GET">
                 <p>Booking detaljer: </p>
-                <label for="date_start">Når skal du booke?: </label><input id="date_start" type="date" name="date_start"
-                                                                           pattern="[dd-mm-YYYY]">
-                <br/>
-                <label for="date_end">Hvor lenge skal dere bruke rommet?: </label><br/><input id="date_end" type="date"
-                                                                                              name="date_end"
-                                                                                              pattern="[dd-mm-YYYY]">
-                <br/>
+                <label for="date">Når skal du booke?: </label><input id="date" type="date" name="date" pattern="[YYYY-mm-dd]" value="YYYY-mm-dd">
+                <select id='time'>
+                    <option value="1">01:00</option>
+                    <option value="2">02:00</option>
+                    <option value="3">03:00</option>
+                    <option value="4">04:00</option>
+                    <option value="5">05:00</option>
+                    <option value="6">06:00</option>
+                    <option value="7">07:00</option>
+                    <option value="8">08:00</option>
+                    <option value="9">09:00</option>
+                    <option value="10">10:00</option>
+                    <option value="11">11:00</option>
+                    <option value="12">12:00</option>
+                    <option value="13">13:00</option>
+                    <option value="14">14:00</option>
+                    <option value="15">15:00</option>
+                    <option value="16">16:00</option>
+                    <option value="17">17:00</option>
+                    <option value="18">18:00</option>
+                    <option value="19">19:00</option>
+                    <option value="20">20:00</option>
+                    <option value="21">21:00</option>
+                    <option value="22">22:00</option>
+                    <option value="23">23:00</option>
+                    <option value="24">24:00</option>
+                </select>
+                <br/><br/>
                 <label for="numberOfPeople">Hvor mange skal bruke rommet?: </label><input id="numberOfPeople"
                                                                                           type="number"
                                                                                           name="numberOfPeople" min="2"
-                                                                                          max="4">
-                <br/>
+                                                                                          max="4" value="2">
+                <br/><br/>
                 <label for="Projektor">Trenger dere Projektor? <br/>Ja: </label><input id="Projektor" type="radio"
                                                                                        name="projektor"
-                                                                                       value="Projektor">
+                                                                                       value="P">
                 <label for="notProjektor">Nei: </label><input id="notProjektor" type="radio" name="projektor"
-                                                              value="ikkeProjektor">
-                <br/>
+                                                              value="iP">
+                <br/><br/>
                 <input id="confirmBtn" type="submit" name="submit" value="Søk">
             </form>
         </div>
