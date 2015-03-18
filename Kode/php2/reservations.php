@@ -1,9 +1,20 @@
+<?php
+// Database connection script
+include ("connect.php");
+
+
+// Clean out expired reservations
+$sql = "DELETE FROM confirms
+        WHERE end_date < NOW()";
+$freequery = mysqli_query($connect, $sql) or die (mysqli_error($connect));
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="reservations.css">
-    <script src="reservations.js"></script>
 </head>
 <body>
 	<form name="søk" action="search_page.php" method="POST">
