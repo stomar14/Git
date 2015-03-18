@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Etasjer</title>
+
+<script language="javascript">
+<!--
+/*Combo Box Image Selector:
+By JavaScript Kit (www.javascriptkit.com)
+Over 200+ free JavaScript here!
+*/
+	function showimage()
+	{
+		if (!document.images)
+		return
+		document.images.pictures.src=
+		document.mygallery.picture.options[document.mygallery.picture.selectedIndex].value
+	}
+</script>
+</head>
+
+<body>
+	<table border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td width="100%"><form name="mygallery"><p>
+			<select name="picture" size="1" onChange="showimage()">
+				<option selected value="Prosjekt/images/etasjeEn.jpg">1. Etasje</option>
+				<option value="Prosjekt/images/etasjeTo.jpg">2. Etasje</option>
+			</select>
+		</p>
+	</form>
+	</td>
+	</tr>
+<tr>
+	<td width="100%"><p align="center"><img src="Prosjekt/images/etasjeEn.jpg" name="pictures"
+	 width="500" height="300"></td>
+</tr>
+</table>
+</body>
+</html>
