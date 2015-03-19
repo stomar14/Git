@@ -1,4 +1,4 @@
-/*Kenneth Andresen*/
+/*CSS bookingsystem*/
 
 *{
 	margin: 0;
@@ -54,7 +54,7 @@ input[type="datetime-local"] {
 	position: relative;
 	left: 10px;
 	top: 60px;
-	height: 220px;
+	height: 230px;
 	width: 100%;
 	max-width: 230px;
     padding: 5px;

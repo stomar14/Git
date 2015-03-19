@@ -64,7 +64,7 @@ $freequery = mysqli_query($connect, $sql) or die (mysqli_error($connect));
             <form name="søk" action="search_page.php" method="GET">
                 <p>Booking detaljer: </p>
                 <label for="date">Når skal du booke?: </label><input id="date" type="date" name="date"
-                                                                     pattern="[YYYY-mm-dd]" value="YYYY-mm-dd">
+                                                                     pattern="[dd-mm-YYYY]" value="dd-mm-YYYY">
                 <select id='time'>
                     <option value="1">01:00</option>
                     <option value="2">02:00</option>
@@ -102,7 +102,7 @@ $freequery = mysqli_query($connect, $sql) or die (mysqli_error($connect));
                                                                                        value="P">
                 <label for="notProjektor">Nei: </label><input id="notProjektor" type="radio" name="projektor"
                                                               value="iP">
-                <br/><br/>
+                <br/>
                 <input id="confirmBtn" type="submit" name="submit" value="Søk">
             </form>
         </div>
