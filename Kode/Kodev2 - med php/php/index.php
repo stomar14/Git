@@ -106,11 +106,11 @@ $freequery = mysqli_query($connect, $sql) or die (mysqli_error($connect));
                 <input id="confirmBtn" type="submit" name="submit" value="Søk">
             </form>
         </div>
-        <form name="søk" action="search_page.php" method="GET">
         <div id="asapButton">
-            <input type="image" src="../images/asapButton.JPG"/>
+            <form name="søk" action="search_page.php" method="GET">
+                <input type="image" src="../images/asapButton.png"/>
+            </form>
         </div>
-        </form>
         <div id="containerRight">
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
