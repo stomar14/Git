@@ -26,6 +26,7 @@ while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
     $size = $row['storrelse'];
     //filter out booked rooms
     $sql = "SELECT * FROM confirms AS c JOIN available AS a ON c.roomnum=a.id WHERE a.id ='$roomnum' LIMIT 1";
+    $row = mysqli_fetch_array($query, MYSQLI_ASSOC)
     $query = mysqli_query($connect, $sql) or die (mysqli_error($connect));
     $start_date = $row['start_date'];
     $end_date = $row['end_date'];
@@ -97,7 +98,7 @@ $chart .= '<div class="clear">';
             <p>Booking detaljer: </p>
             <label for="date">Når skal du booke?: </label><input id="date" type="date" name="date"
                                                                  pattern="[YYYY-mm-dd]" value="<?php echo $date ?>">
-            <select id='time'>
+            <select id='time' value="timeAlone">
                 <option value="1">01:00</option>
                 <option value="2">02:00</option>
                 <option value="3">03:00</option>
@@ -128,7 +129,7 @@ $chart .= '<div class="clear">';
                                                                                      name="date_end"
                                                                                      pattern="[YYYY-mm-dd]"
                                                                                      value="<?php echo $date_end ?>">
-            <select id='time_end'>
+            <select id='time_end' value="time_endAlone">
                 <option value="1">01:00</option>
                 <option value="2">02:00</option>
                 <option value="3">03:00</option>

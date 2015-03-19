@@ -4,8 +4,19 @@ include ("connect.php");
 //put info from form into variables
 $prosjektor = $_POST['prosjektor'];
 $nop = $_POST['numberOfPeople'];
-$date = $_POST['date'];
-$date_end = $_POST['date_end'];
+$dateAlone = $_POST['date'];
+$timeAlone = $_POST['time'];
+$date_endAlone = $_POST['date_end'];
+$time_endAlone = $_POST['time_end'];
+$date = date('Y-m-d H:i', strtotime("$dateAlone $timeAlone"));
+$date_end = date('Y-m-d H:i', strtotime("$date_endAlone $time_endAlone"));
+
+
+$sql = "UPDATE available AS a JOIN confirms AS c ON a.id=c.roomnum SET a.avail=0
+WHERE c.start_date < '$date_end' < c.end_date OR c.start_date > '$date'> c.end_date
+OR '$date' < c.start_date < '$date_end'
+OR '$date' < c.end_date < '$date_end'";
+$query = mysqli_query($connect, $sql);
 // Get initial state of available rooms
 $chart = "";
 if($prosjektor == 'P') {
@@ -16,74 +27,147 @@ if($prosjektor == 'P') {
 	};
 $query = mysqli_query($connect, $sql) or die (mysqli_error($connect));
 // Loop and get all the data
-while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
-    // Assign room data to variables
+while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)){
+    // Assign table data to variables
     $id = $row['id'];
     $roomnum = $row['roomnum'];
     $avail = $row['avail'];
     $prosjektor = $row['prosjektor'];
-    $etasje = $row['etasje'];
-    $size = $row['storrelse'];
-    //filter out booked rooms
-    $sql = "SELECT * FROM confirms AS c JOIN available AS a ON c.roomnum=a.id WHERE a.id ='$roomnum' LIMIT 1";
-    $query = mysqli_query($connect, $sql) or die (mysqli_error($connect));
-    $start_date = $row['start_date'];
-    $end_date = $row['end_date'];
     // Build display output
-    // Display for rooms
-    if ($start_date < $date & $date < $end_date);
-
-    else if ($start_date < $date_end & $date_end < $end_date)
-        $chart .= '<div class="full"><div class="roomText">'.$roomnum.' is booked from '.$start_date.' to '.$end_date.'.</div></div>';
-
-    else if ($date < $start_date & $start_date < $date_end)
-        $chart .= '<div class="full"><div class="roomText">'.$roomnum.' is booked from '.$start_date.' to '.$end_date.'.</div></div>';
-
-    else if ($date < $start_date & $date_end > $end_date)
-        $chart .= '<div class="full"><div class="roomText">'.$roomnum.' is booked from '.$start_date.' to '.$end_date.'.</div></div>';
-
-    else if ($date < $start_date & $date_end < $end_date)
-        $chart .= '<div class="full"><div class="roomText">'.$roomnum.' is booked from '.$start_date.' to '.$end_date.'.</div></div>';
-
-    else if ($start_date < $date & $end_date < $date_end)
-        $chart .= '<div class="full"><div class="roomText">'.$roomnum.' is booked from '.$start_date.' to '.$end_date.'.</div></div>';
-
-    else
-        $chart .= '<div class="available"><div id="tbl_' . $roomnum . '" class="roomText">' . $roomnum . ' er ledig i etasje ' . $etasje . ' med plass til ' . $size . ' personer.</div></div>';
-
+    // Display for available rooms
+    if ($avail == 0){
+        $chart .= '<div class="full"><div class="numSeats">The room is taken.</div></div>';
+    } else {
+        // Display for available rooms - clickable inner div
+        $chart .= '<div class="available"><div id="tbl_'.$id.'" class="numSeats" onClick="showRoom(this.id)">The room is free!</div></div>';
+    }
 }
-
 $chart .= '<div class="clear">';
+
+
+$sql = "UPDATE available SET avail = 1";
+$query = mysqli_query($connect, $sql);
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="reservations.css">
-<script src="reservations.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../css/bookingSystem.css">
+    <link rel="icon" href="../images/favicon.png" type="image/png"/>
+    <title>Westerdals CK32</title>
+    <script type="text/javascript">
+        var datefield = document.createElement("input");
+        datefield.setAttribute("type", "date");
+        if (datefield.type != "date") { //if browser doesn't support input type="date", load files for jQuery UI Date Picker
+            document.write('<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n');
+            document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"><\/script>\n');
+            document.write('<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"><\/script>\n')
+        }
+    </script>
+
+    <script>
+        if (datefield.type != "date") { //if browser doesn't support input type="date", initialize date picker widget:
+            jQuery(function ($) { //on document.ready
+                $('#date').datepicker();
+            })
+        }
+    </script>
 </head>
+
 <body>
-	<form name="søk" action="reservator.php" method="POST">
-		<fieldset>
-			<legend>Booking Details: </legend>
-			<label for="date">Når skal du booke?: </label><input id="date" type="datetime" name="date" pattern="[YYYY-mm-dd HH:MM]" value="<?php echo $date?>">
-			<br>
-			<label for="date_end">Hvor lenge skal dere bruke rommet?: </label><input id="date_end" type="datetime" name="date_end" pattern="[YYYY-mm-dd HH:MM]" value="<?php echo $date_end?>">
-			<br>
-			<label for="velgRom">Hvilket rom vil du booke?: </label><input id="velgRom" type="int" name="velgRom" pattern="[0-9]{1,2}" min="1" max="20">
-			<br>
-			<label for="name">Hvem booker?: </label><input id="name" type="text" name="name">
-			<br>
-			<input id="confirmBtn" type="submit" name="submit">
-		</fieldset>
-	</form>
-<div id="wrapper">
-   <div id="header"></div>
-   <div id="rom">
-      <?php echo $chart; ?>   
-   </div>
+<div class="pageWrap">
+    <a href="index.php">
+        <img src="../images/favicon.png" alt="WesterdalsCK32" id="logoWesterdals">
+    </a>
+
+    <h1>Booking av grupperom - Christian Krohgs gate 32</h1>
+
+    <div id="containerLeft">
+        <form name="søk" action="reservator.php" method="POST">
+            <p>Booking detaljer: </p>
+            <label for="date">Når skal du booke?: </label><input id="date" type="date" name="date"
+                                                                 pattern="[YYYY-mm-dd]" value="<?php echo $dateAlone ?>">
+            <select id="time" name="time" >
+                <option value="01:00">01:00</option>
+                <option value="02:00">02:00</option>
+                <option value="03:00">03:00</option>
+                <option value="04:00">04:00</option>
+                <option value="05;00">05:00</option>
+                <option value="06:00">06:00</option>
+                <option value="07:00">07:00</option>
+                <option value="08:00">08:00</option>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+                <option value="19:00">19:00</option>
+                <option value="20:00">20:00</option>
+                <option value="21:00">21:00</option>
+                <option value="22:00">22:00</option>
+                <option value="23:00">23:00</option>
+                <option value="24:00">24:00</option>
+            </select>
+            <br/>
+            <label for="date_end">Hvor lenge skal dere bruke rommet?: </label><br/><input id="date_end" type="date"
+                                                                                          name="date_end"
+                                                                                          pattern="[YYYY-mm-dd]"
+                                                                                          value="<?php echo $date_endAlone ?>">
+            <select id="time_end" name="time_end" >
+                <option value="01:00">01:00</option>
+                <option value="02:00">02:00</option>
+                <option value="03:00">03:00</option>
+                <option value="04:00">04:00</option>
+                <option value="05;00">05:00</option>
+                <option value="06:00">06:00</option>
+                <option value="07:00">07:00</option>
+                <option value="08:00">08:00</option>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+                <option value="19:00">19:00</option>
+                <option value="20:00">20:00</option>
+                <option value="21:00">21:00</option>
+                <option value="22:00">22:00</option>
+                <option value="23:00">23:00</option>
+                <option value="24:00">24:00</option>
+            </select>
+            <br/>
+            <label for="velgRom">Hvilket rom vil du booke?: </label><input id="velgRom" type="int" name="velgRom"
+                                                                           pattern="[0-9]{1,2}" min="1" max="20">
+            <br/>
+            <label for="name">Hvem booker?: </label><input id="name" type="text" name="name">
+            <br/>
+            <input id="confirmBtn" type="submit" name="submit" value="Book">
+        </form>
+    </div>
+    <div id="containerRight">
+        <?php echo $chart; ?>
+    </div>
 </div>
+<footer>
+    <img src="../images/footerLogo.png" alt="footerLogo">
+    <br/>
+    <pre><a href="tel:22057550">Telefon 22 05 75 50</a>   <a
+            href="mailto:post@westerdals.no">post@westerdals.no</a></pre>
+    <br/>
+
+    <p>Løsning laget av Gruppe 9</p>
+</footer>
 </body>
 </html>
