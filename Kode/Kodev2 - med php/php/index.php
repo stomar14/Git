@@ -1,6 +1,6 @@
 <?php
 // Database connection script
-include ("connect.php");
+include("connect.php");
 
 
 // Clean out expired reservations
@@ -20,7 +20,7 @@ $freequery = mysqli_query($connect, $sql) or die (mysqli_error($connect));
     <title>Westerdals CK32</title>
     <style>
         footer {
-            bottom: -100px;
+            bottom: -200px;
         }
     </style>
     <script type="text/javascript">
@@ -40,6 +40,15 @@ $freequery = mysqli_query($connect, $sql) or die (mysqli_error($connect));
             })
         }
     </script>
+
+    <script type="text/javascript">
+        function showimage() {
+            if (!document.images)
+                return
+            document.images.pictures.src =
+                document.mygallery.picture.options[document.mygallery.picture.selectedIndex].value
+        }
+    </script>
 </head>
 
 <body>
@@ -54,7 +63,8 @@ $freequery = mysqli_query($connect, $sql) or die (mysqli_error($connect));
         <div id="containerLeft">
             <form name="søk" action="search_page.php" method="GET">
                 <p>Booking detaljer: </p>
-                <label for="date">Når skal du booke?: </label><input id="date" type="date" name="date" pattern="[YYYY-mm-dd]" value="YYYY-mm-dd">
+                <label for="date">Når skal du booke?: </label><input id="date" type="date" name="date"
+                                                                     pattern="[YYYY-mm-dd]" value="YYYY-mm-dd">
                 <select id='time'>
                     <option value="1">01:00</option>
                     <option value="2">02:00</option>
@@ -96,8 +106,30 @@ $freequery = mysqli_query($connect, $sql) or die (mysqli_error($connect));
                 <input id="confirmBtn" type="submit" name="submit" value="Søk">
             </form>
         </div>
+        <form name="søk" action="search_page.php" method="GET">
         <div id="asapButton">
             <input type="image" src="../images/asapButton.JPG"/>
+        </div>
+        </form>
+        <div id="containerRight">
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="100%">
+                        <form name="mygallery">
+                            <p>
+                                <select name="picture" size="1" onChange="showimage()">
+                                    <option selected value="../images/etgTo.jpg">2. Etasje</option>
+                                    <option value="../images/etgTre.jpg">3. Etasje</option>
+                                </select>
+                            </p>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%"><p align="center"><img src="../images/etgTo.jpg" name="pictures"
+                                                            width="690" height="400"></td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
