@@ -2,7 +2,6 @@
 // Database connection script
 include("connect.php");
 
-
 // Clean out expired reservations
 $sql = "DELETE FROM confirms
         WHERE end_date < NOW()";
@@ -42,11 +41,20 @@ $freequery = mysqli_query($connect, $sql) or die (mysqli_error($connect));
     </script>
 
     <script type="text/javascript">
-        function showimage() {
-            if (!document.images)
-                return
-            document.images.pictures.src =
-                document.mygallery.picture.options[document.mygallery.picture.selectedIndex].value
+        var datefield = document.createElement("input");
+        datefield.setAttribute("type", "date");
+        if (datefield.type != "date") { //if browser doesn't support input type="date", load files for jQuery UI Date Picker
+            document.write('<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n');
+            document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"><\/script>\n');
+            document.write('<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"><\/script>\n')
+        }
+    </script>
+
+    <script>
+        if (datefield.type != "date") { //if browser doesn't support input type="date", initialize date picker widget:
+            jQuery(function ($) { //on document.ready
+                $('#date_end').datepicker();
+            })
         }
     </script>
 </head>
@@ -61,75 +69,84 @@ $freequery = mysqli_query($connect, $sql) or die (mysqli_error($connect));
         <h1>Booking av grupperom - Christian Krohgs gate 32</h1>
 
         <div id="containerLeft">
-            <form name="søk" action="search_page.php" method="GET">
+            <form name="søk" action="search_page.php" method="POST">
                 <p>Booking detaljer: </p>
-                <label for="date">Når skal du booke?: </label><input id="date" type="date" name="date"
-                                                                     pattern="[dd-mm-YYYY]" value="dd-mm-YYYY">
-                <select id='time'>
-                    <option value="1">01:00</option>
-                    <option value="2">02:00</option>
-                    <option value="3">03:00</option>
-                    <option value="4">04:00</option>
-                    <option value="5">05:00</option>
-                    <option value="6">06:00</option>
-                    <option value="7">07:00</option>
-                    <option value="8">08:00</option>
-                    <option value="9">09:00</option>
-                    <option value="10">10:00</option>
-                    <option value="11">11:00</option>
-                    <option value="12">12:00</option>
-                    <option value="13">13:00</option>
-                    <option value="14">14:00</option>
-                    <option value="15">15:00</option>
-                    <option value="16">16:00</option>
-                    <option value="17">17:00</option>
-                    <option value="18">18:00</option>
-                    <option value="19">19:00</option>
-                    <option value="20">20:00</option>
-                    <option value="21">21:00</option>
-                    <option value="22">22:00</option>
-                    <option value="23">23:00</option>
-                    <option value="24">24:00</option>
+                <label for="date">Når skal du booke?: </label><input id="date" type="date" name="date">
+                <select id="time" name="time">
+                    <option value="01:00">01:00</option>
+                    <option value="02:00">02:00</option>
+                    <option value="03:00">03:00</option>
+                    <option value="04:00">04:00</option>
+                    <option value="05;00">05:00</option>
+                    <option value="06:00">06:00</option>
+                    <option value="07:00">07:00</option>
+                    <option value="08:00">08:00</option>
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                    <option value="22:00">22:00</option>
+                    <option value="23:00">23:00</option>
+                    <option value="24:00">24:00</option>
                 </select>
-                <br/><br/>
+                <br/>
+                <label for="date_end">Hvor lenge skal dere bruke rommet?: </label><br/><input id="date_end" type="date"
+                                                                                              name="date_end">
+                <select id="time_end" name="time_end">
+                    <option value="01:00">01:00</option>
+                    <option value="02:00">02:00</option>
+                    <option value="03:00">03:00</option>
+                    <option value="04:00">04:00</option>
+                    <option value="05;00">05:00</option>
+                    <option value="06:00">06:00</option>
+                    <option value="07:00">07:00</option>
+                    <option value="08:00">08:00</option>
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                    <option value="22:00">22:00</option>
+                    <option value="23:00">23:00</option>
+                    <option value="24:00">24:00</option>
+                </select>
                 <label for="numberOfPeople">Hvor mange skal bruke rommet?: </label><input id="numberOfPeople"
                                                                                           type="number"
                                                                                           name="numberOfPeople" min="2"
                                                                                           max="4" value="2">
-                <br/><br/>
-                <label for="Projektor">Trenger dere Projektor? <br/>Ja: </label><input id="Projektor" type="radio"
-                                                                                       name="projektor"
-                                                                                       value="P">
-                <label for="notProjektor">Nei: </label><input id="notProjektor" type="radio" name="projektor"
-                                                              value="iP">
+                <br/>
+                <label for="Prosjektor">Trenger dere Prosjektor? <br/>Ja: </label><input id="Prosjektor" type="radio"
+                                                                                         name="prosjektor" value="P">
+                <label for="ikkeProsjektor">Nei: </label><input id="ikkeProsjektor" type="radio" name="prosjektor"
+                                                                value="iP">
                 <br/>
                 <input id="confirmBtn" type="submit" name="submit" value="Søk">
             </form>
         </div>
         <div id="asapButton">
-            <form name="søk" action="search_page.php" method="GET">
-                <input type="image" src="../images/asapButton.png"/>
+            <form name="søk" action="search_page.php" method="POST">
+                <input class="asapBtn" type="submit" name="asapBtn" value=""/>
             </form>
         </div>
         <div id="containerRight">
-            <table border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td width="100%">
-                        <form name="mygallery">
-                            <p>
-                                <select name="picture" size="1" onChange="showimage()">
-                                    <option selected value="../images/etgTo.jpg">2. Etasje</option>
-                                    <option value="../images/etgTre.jpg">3. Etasje</option>
-                                </select>
-                            </p>
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <td width="100%"><p align="center"><img src="../images/etgTo.jpg" name="pictures"
-                                                            width="690" height="400"></td>
-                </tr>
-            </table>
+            <img src="../images/D2_westerdals_01_v2 utentittel.jpg" alt="westerdalsIllustrasjon" height="420" width="800"/>
         </div>
     </div>
 </div>

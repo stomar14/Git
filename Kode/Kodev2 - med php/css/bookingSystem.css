@@ -50,6 +50,12 @@ input[type="datetime-local"] {
     bottom: -100px;
 }
 
+.asapBtn {
+    background-image: url("../images/asapButton.png");
+    background-repeat: no-repeat;
+    height: 62px;
+    width: 147px;
+}
 #containerLeft {
 	position: relative;
 	left: 10px;
@@ -67,6 +73,15 @@ input[type="datetime-local"] {
     top: -250px;
 	height: 400px;
 	width: 100%;
+    max-width: 800px;
+}
+
+#containerLast {
+    position: relative;
+    left: 250px;
+    top: 20px;
+    height: 400px;
+    width: 100%;
     max-width: 800px;
 }
 
@@ -95,14 +110,14 @@ footer {
 
 /* css til PHP */
 .available{
-	background-image: url("../images/openTable.jpg");
+	background-image: url("../images/roomOpen.jpg");
 	background-repeat: no-repeat;
 	float: left;
 	height: 200px;
 	width: 200px;
 }
 .full{
-	background-image: url("../images/tableFull.jpg");
+	background-image: url("../images/roomFull.jpg");
 	background-repeat: no-repeat;
 	float: left;
 	height: 200px;
@@ -113,9 +128,9 @@ footer {
 }
 .numSeats{
 	color: #03F;
-	margin: 75px;
+	margin: 30px;
 	height: 50px;
-	width: 50px;
+	width: 110px;
 }
 
 /* Animation */
