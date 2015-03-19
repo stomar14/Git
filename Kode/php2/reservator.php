@@ -4,9 +4,13 @@ include ("connect.php");
 
 
 $velgRom = $_POST['velgRom'];
-$date = $_POST['date'];
-$date_end = $_POST['date_end'];
 $name = $_POST['name'];
+$dateAlone = $_POST['date'];
+$timeAlone = $_POST['time'];
+$date_endAlone = $_POST['date_end'];
+$time_endAlone = $_POST['time_end'];
+$date = date('Y-m-d H:i', strtotime("$dateAlone $timeAlone"));
+$date_end = date('Y-m-d H:i', strtotime("$date_endAlone $time_endAlone"));
 
 $tbl_insert = "INSERT INTO confirms (roomnum, start_date, end_date, navn)
 	VALUES ('$velgRom', '$date', '$date_end', '$name')";
@@ -16,4 +20,5 @@ $tbl_insert = "INSERT INTO confirms (roomnum, start_date, end_date, navn)
 	    } else {
 	        echo "<h3>Booking ikke fullført, prøv igjen. Hvis det fortsatt ikke funker, vennligst kontakt systemansvarlig!</h3>";
     }
+
 ?>
